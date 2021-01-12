@@ -13,9 +13,6 @@ public class Dodgems extends Attraction implements ITicketed {
     public double defaultPrice() {
         return 4.50f;
     }
-    public double chargeCustomer(Visitor visitor) {
-        return 0;
-    }
 
     @Override
     public double priceFor(Visitor visitor) {

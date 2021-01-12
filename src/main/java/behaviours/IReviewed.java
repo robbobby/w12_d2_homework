@@ -1,6 +1,6 @@
 package behaviours;
 
-public interface IReviewed {
+public interface IReviewed extends ISecurity {
     public int getRating();
     public String getName();
 }

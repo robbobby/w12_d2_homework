@@ -1,6 +1,8 @@
 package stalls;
 
 import behaviours.IReviewed;
+import behaviours.ISecurity;
+import people.Visitor;
 
 public abstract class Stall implements IReviewed {
 
@@ -31,5 +33,10 @@ public abstract class Stall implements IReviewed {
 
     public ParkingSpot getParkingSpot() {
         return parkingSpot;
+    }
+
+    @Override
+    public boolean isAllowedTo(Visitor visitor) {
+        return true;
     }
 }

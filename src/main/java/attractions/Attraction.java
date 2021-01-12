@@ -1,11 +1,19 @@
 package attractions;
 
 import behaviours.IReviewed;
+import behaviours.ISecurity;
+import people.Visitor;
 
-public abstract class Attraction implements IReviewed {
+public abstract class Attraction implements IReviewed{
 
     private String name;
     private int rating;
+
+    @Override
+    public boolean isAllowedTo(Visitor visitor) {
+        return true;
+    }
+
     private int visitCount;
 
     public Attraction(String name, int rating) {

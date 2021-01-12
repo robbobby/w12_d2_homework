@@ -7,6 +7,8 @@ import stalls.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -26,10 +28,10 @@ public class ThemeParkTest {
         dodgems = new Dodgems("Dodgets Ride", 0);
         park = new Park("Park Ride", 0);
         playground = new Playground("Playerground Ride", 0);
-        rollerCoaster = new RollerCoaster("Rollercoaster Ride", 0);
+        rollerCoaster = new RollerCoaster("Rollercoaster Ride", 20);
         candyflossStall = new CandyflossStall("The Candy Floss Stall", "Me", ParkingSpot.A1, 0);
         iceCreamStall = new IceCreamStall("The Candy Floss Stall", "Me", ParkingSpot.A1, 0);
-        tobaccoStall = new IceCreamStall("The Candy Floss Stall", "Me", ParkingSpot.A1, 0);
+        tobaccoStall = new TobaccoStall("The Candy Floss Stall", "Me", ParkingSpot.A1, 0);
         ArrayList<Attraction> attractions  = new ArrayList<>(
                 Arrays.asList(dodgems, park, playground, rollerCoaster));
         ArrayList<Stall> stalls = new ArrayList<>(
@@ -54,5 +56,25 @@ public class ThemeParkTest {
         themePark.visit(visitor, rollerCoaster);
         assertEquals(1, rollerCoaster.getVisitCount());
         assertTrue(visitor.doesVisitedAttractionsContains(rollerCoaster));
+    }
+    @Test public void canGetReviews() {
+        HashMap<String, Integer> review = new HashMap<>();
+        review.put(rollerCoaster.getName(), rollerCoaster.getRating());
+        assertEquals(review.get(rollerCoaster.getName()), themePark.getAllReviews().get(rollerCoaster.getName()));
+    }
+    @Test public void canGetAllAllowedForRides() {
+        ArrayList<IReviewed> ridesAllowedOn =  themePark.getAllAllowedFor(visitor);
+        assertEquals(5, ridesAllowedOn.size());
+    }
+    @Test public void _canGetAllAllowedForRides() {
+        visitor = new Visitor(19,140,50);
+        ArrayList<IReviewed> ridesAllowedOn =  themePark.getAllAllowedFor(visitor);
+        assertEquals(5, ridesAllowedOn.size());
+        System.out.println(ridesAllowedOn);
+    }
+    @Test public void __canGetAllAllowedForRides() {
+        visitor = new Visitor(13,150,50);
+        ArrayList<IReviewed> ridesAllowedOn =  themePark.getAllAllowedFor(visitor);
+        assertEquals(6, ridesAllowedOn.size());
     }
 }
