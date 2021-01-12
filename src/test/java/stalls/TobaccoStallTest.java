@@ -12,7 +12,7 @@ public class TobaccoStallTest {
 
     @Before public void setUp() throws Exception {
         visitor = new Visitor(18, 183, 90);
-        tobaccoStall = new TobaccoStall("Jacks Drum", "Jack Jarvis", ParkingSpot.B1);
+        tobaccoStall = new TobaccoStall("Jacks Drum", "Jack Jarvis", ParkingSpot.B1, 0);
     }
     @Test public void hasName() {
         assertEquals("Jacks Drum", tobaccoStall.getName());
